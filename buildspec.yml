@@ -5,12 +5,16 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - npm install
-
+      - echo "Installing dependencies..."
+      - npm ci || npm install
   build:
     commands:
-      - npm run build
+      - echo "No build step needed"
+  post_build:
+    commands:
+      - echo "Build completed at `date`"
 
 artifacts:
   files:
     - '**/*'
+  discard-paths: no
